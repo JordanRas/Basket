@@ -2,7 +2,9 @@ package Basket.joueur;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.Column;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 
 @Entity
 @Table
@@ -14,6 +16,9 @@ public class Joueur {
     private String prenom;
     private String numero;
 
+    @Transient
+    private int nbMatchJoue;
+
     public Joueur()
     {
 
@@ -23,12 +28,14 @@ public class Joueur {
     {
         setId(id);
         setNom(nom);
+        setPrenom(prenom);
         setNumero(numero);
     }
 
     public Joueur(String nom, String prenom, String numero)
     {
         setNom(nom);
+        setPrenom(prenom);
         setNumero(numero);
     }
 

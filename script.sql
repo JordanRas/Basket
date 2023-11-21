@@ -22,7 +22,7 @@ CREATE DATABASE Basket;
 ---------------------------------------------------------------------------
 
 CREATE TABLE Equipe(
-    id serial primary key,
+    id_equipe serial primary key,
     nom varchar
 );
 
@@ -31,7 +31,8 @@ CREATE TABLE Joueur(
     id serial primary key,
     nom varchar,
     prenom varchar,
-    numero varchar
+    numero varchar,
+    id_equipe int
 );
 
 CREATE TABLE Match(
@@ -41,8 +42,8 @@ CREATE TABLE Match(
     date DATE,
 
     
-    FOREIGN KEY (idEq1) REFERENCES Equipe(id),
-    FOREIGN KEY (idEq2) REFERENCES Equipe(id)
+    FOREIGN KEY (idEq1) REFERENCES Equipe(id_equipe),
+    FOREIGN KEY (idEq2) REFERENCES Equipe(id_equipe)
 );
 
 
@@ -54,7 +55,7 @@ CREATE TABLE Joueur_Equipe(
 
 
     FOREIGN KEY (idJoueur) REFERENCES Joueur(id),
-    FOREIGN KEY (idEquipe) REFERENCES Equipe(id)
+    FOREIGN KEY (idEquipe) REFERENCES Equipe(id_equipe)
 );
 
 
@@ -150,82 +151,82 @@ INSERT INTO Equipe VALUES
 ;
 
 -- Insertion de joueurs avec des numéros
-INSERT INTO Joueur (nom , prenom , numero) VALUES
-    ('Nom' , 'Joueur 1', '1'),
-    ('Nom' , 'Joueur 2', '2'),
-    ('Nom' , 'Joueur 3', '3'),
-    ('Nom' , 'Joueur 4', '4'),
-    ('Nom' , 'Joueur 5', '5'),
-    ('Nom' , 'Joueur 6', '6'),
-    ('Nom' , 'Joueur 7', '7'),
-    ('Nom' , 'Joueur 8', '8'),
-    ('Nom' , 'Joueur 9', '9'),
-    ('Nom' , 'Joueur 10', '10'),
-    ('Nom' , 'Joueur 11', '11'),
-    ('Nom' , 'Joueur 12', '12'),
-    ('Nom' , 'Joueur 13', '13'),
-    ('Nom' , 'Joueur 14', '14'),
-    ('Nom' , 'Joueur 15', '15'),
-    ('Nom' , 'Joueur 16', '16'),
-    ('Nom' , 'Joueur 17', '17'),
-    ('Nom' , 'Joueur 18', '18'),
-    ('Nom' , 'Joueur 19', '19'),
-    ('Nom' , 'Joueur 20', '20'),
-    ('Nom' , 'Joueur 21', '21'),
-    ('Nom' , 'Joueur 22', '22'),
-    ('Nom' , 'Joueur 23', '23'),
-    ('Nom' , 'Joueur 24', '24'),
-    ('Nom' , 'Joueur 25', '25'),
-    ('Nom' , 'Joueur 26', '26'),
-    ('Nom' , 'Joueur 27', '27'),
-    ('Nom' , 'Joueur 28', '28'),
-    ('Nom' , 'Joueur 29', '29'),
-    ('Nom' , 'Joueur 30', '30'),
-    ('Nom' , 'Joueur 31', '31'),
-    ('Nom' , 'Joueur 32', '32'),
-    ('Nom' , 'Joueur 33', '33'),
-    ('Nom' , 'Joueur 34', '34'),
-    ('Nom' , 'Joueur 35', '35'),
-    ('Nom' , 'Joueur 36', '36'),
-    ('Nom' , 'Joueur 37', '37'),
-    ('Nom' , 'Joueur 38', '38'),
-    ('Nom' , 'Joueur 39', '39'),
-    ('Nom' , 'Joueur 40', '40'),
-    ('Nom' , 'Joueur 41', '41'),
-    ('Nom' , 'Joueur 42', '42'),
-    ('Nom' , 'Joueur 43', '43'),
-    ('Nom' , 'Joueur 44', '44'),
-    ('Nom' , 'Joueur 45', '45'),
-    ('Nom' , 'Joueur 46', '46'),
-    ('Nom' , 'Joueur 47', '47'),
-    ('Nom' , 'Joueur 48', '48'),
-    ('Nom' , 'Joueur 49', '49'),
-    ('Nom' , 'Joueur 50', '50'),
-    ('Nom' , 'Joueur 51', '51'),
-    ('Nom' , 'Joueur 52', '52'),
-    ('Nom' , 'Joueur 53', '53'),
-    ('Nom' , 'Joueur 54', '54'),
-    ('Nom' , 'Joueur 55', '55'),
-    ('Nom' , 'Joueur 56', '56'),
-    ('Nom' , 'Joueur 57', '57'),
-    ('Nom' , 'Joueur 58', '58'),
-    ('Nom' , 'Joueur 59', '59'),
-    ('Nom' , 'Joueur 60', '60'),
-    ('Nom' , 'Joueur 61', '61'),
-    ('Nom' , 'Joueur 62', '62'),
-    ('Nom' , 'Joueur 63', '63'),
-    ('Nom' , 'Joueur 64', '64'),
-    ('Nom' , 'Joueur 65', '65'),
-    ('Nom' , 'Joueur 66', '66'),
-    ('Nom' , 'Joueur 67', '67'),
-    ('Nom' , 'Joueur 68', '68'),
-    ('Nom' , 'Joueur 69', '69'),
-    ('Nom' , 'Joueur 70', '70'),
-    ('Nom' , 'Joueur 71', '71'),
-    ('Nom' , 'Joueur 72', '72'),
-    ('Nom' , 'Joueur 73', '73'),
-    ('Nom' , 'Joueur 74', '74'),
-    ('Nom' , 'Joueur 75', '75')
+INSERT INTO Joueur (nom , prenom , numero, id_equipe) VALUES
+    ('Nom' , 'Joueur 1', '1', 1),
+    ('Nom' , 'Joueur 2', '2', 1),
+    ('Nom' , 'Joueur 3', '3', 1),
+    ('Nom' , 'Joueur 4', '4', 1),
+    ('Nom' , 'Joueur 5', '5', 1),
+    ('Nom' , 'Joueur 6', '6', 2),
+    ('Nom' , 'Joueur 7', '7', 2),
+    ('Nom' , 'Joueur 8', '8', 2),
+    ('Nom' , 'Joueur 9', '9', 2),
+    ('Nom' , 'Joueur 10', '10', 2),
+    ('Nom' , 'Joueur 11', '11', 3),
+    ('Nom' , 'Joueur 12', '12', 3),
+    ('Nom' , 'Joueur 13', '13', 3),
+    ('Nom' , 'Joueur 14', '14', 3),
+    ('Nom' , 'Joueur 15', '15', 3),
+    ('Nom' , 'Joueur 16', '16', 4),
+    ('Nom' , 'Joueur 17', '17', 4),
+    ('Nom' , 'Joueur 18', '18', 4),
+    ('Nom' , 'Joueur 19', '19', 4),
+    ('Nom' , 'Joueur 20', '20', 4),
+    ('Nom' , 'Joueur 21', '21', 5),
+    ('Nom' , 'Joueur 22', '22', 5),
+    ('Nom' , 'Joueur 23', '23', 5),
+    ('Nom' , 'Joueur 24', '24', 5),
+    ('Nom' , 'Joueur 25', '25', 5),
+    ('Nom' , 'Joueur 26', '26', 6),
+    ('Nom' , 'Joueur 27', '27', 6),
+    ('Nom' , 'Joueur 28', '28', 6),
+    ('Nom' , 'Joueur 29', '29', 6),
+    ('Nom' , 'Joueur 30', '30', 6),
+    ('Nom' , 'Joueur 31', '31', 7),
+    ('Nom' , 'Joueur 32', '32', 7),
+    ('Nom' , 'Joueur 33', '33', 7),
+    ('Nom' , 'Joueur 34', '34', 7),
+    ('Nom' , 'Joueur 35', '35', 7),
+    ('Nom' , 'Joueur 36', '36', 8),
+    ('Nom' , 'Joueur 37', '37', 8),
+    ('Nom' , 'Joueur 38', '38', 8),
+    ('Nom' , 'Joueur 39', '39', 8),
+    ('Nom' , 'Joueur 40', '40', 8),
+    ('Nom' , 'Joueur 41', '41', 9),
+    ('Nom' , 'Joueur 42', '42', 9),
+    ('Nom' , 'Joueur 43', '43', 9),
+    ('Nom' , 'Joueur 44', '44', 9),
+    ('Nom' , 'Joueur 45', '45', 9),
+    ('Nom' , 'Joueur 46', '46', 10),
+    ('Nom' , 'Joueur 47', '47', 10),
+    ('Nom' , 'Joueur 48', '48', 10),
+    ('Nom' , 'Joueur 49', '49', 10),
+    ('Nom' , 'Joueur 50', '50', 10),
+    ('Nom' , 'Joueur 51', '51', 11),
+    ('Nom' , 'Joueur 52', '52', 11),
+    ('Nom' , 'Joueur 53', '53', 11),
+    ('Nom' , 'Joueur 54', '54', 11),
+    ('Nom' , 'Joueur 55', '55', 11),
+    ('Nom' , 'Joueur 56', '56', 12),
+    ('Nom' , 'Joueur 57', '57', 12),
+    ('Nom' , 'Joueur 58', '58', 12),
+    ('Nom' , 'Joueur 59', '59', 12),
+    ('Nom' , 'Joueur 60', '60', 12),
+    ('Nom' , 'Joueur 61', '61', 13),
+    ('Nom' , 'Joueur 62', '62', 13),
+    ('Nom' , 'Joueur 63', '63', 13),
+    ('Nom' , 'Joueur 64', '64', 13),
+    ('Nom' , 'Joueur 65', '65', 13),
+    ('Nom' , 'Joueur 66', '66', 14),
+    ('Nom' , 'Joueur 67', '67', 14),
+    ('Nom' , 'Joueur 68', '68', 14),
+    ('Nom' , 'Joueur 69', '69', 14),
+    ('Nom' , 'Joueur 70', '70', 14),
+    ('Nom' , 'Joueur 71', '71', 15),
+    ('Nom' , 'Joueur 72', '72', 15),
+    ('Nom' , 'Joueur 73', '73', 15),
+    ('Nom' , 'Joueur 74', '74', 15),
+    ('Nom' , 'Joueur 75', '75', 15)
 ;
 
 
