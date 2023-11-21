@@ -17,7 +17,8 @@ public class Joueur {
     private String numero;
 
     @Transient
-    private int nbMatchJoue;
+    private int nbMatchJoue = 5;
+
 
     public Joueur()
     {
@@ -37,6 +38,14 @@ public class Joueur {
         setNom(nom);
         setPrenom(prenom);
         setNumero(numero);
+    }
+
+    public Joueur(String nom, String prenom, String numero, int nbMatchJoue)
+    {
+        setNom(nom);
+        setPrenom(prenom);
+        setNumero(numero);
+        setNbMatchJoue(nbMatchJoue);
     }
 
 
@@ -63,5 +72,12 @@ public class Joueur {
     }
     public void setNumero(String numero) {
         this.numero = numero;
+    }
+    public int getNbMatchJoue() {
+        return nbMatchJoue;
+    }
+
+    public void setNbMatchJoue(int nbMatchJoue) {
+        this.nbMatchJoue = nbMatchJoue;
     }
 }

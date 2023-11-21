@@ -18,4 +18,8 @@ public class EquipeService {
     public List<Equipe> getEquipes() {
         return equipeRepository.findAll();
     }
+
+    public Equipe getEquipeById(Long idEquipe) {
+        return equipeRepository.getEquipeById(idEquipe);
+    }
 }

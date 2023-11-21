@@ -12,6 +12,5 @@ public class JoueurTempsService {
     public JoueurTempsService(JoueurTempsRepository joueurTempsRepository) {
         this.joueurTempsRepository = joueurTempsRepository;
     }
-
     
 }
